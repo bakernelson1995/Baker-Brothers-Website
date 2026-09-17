@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Private Lessons | Baker Bros Wrestling</title>
+  <meta name="description" content="One-on-one and small-group private wrestling lessons in Rochelle, Illinois.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230c0c0d'/><text x='50' y='70' font-size='62' font-family='Arial Black,Arial' font-weight='900' text-anchor='middle' fill='%23d62828'>BB</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="lessons">
+  <header id="site-header"></header>
+
+  <main>
+    <section class="hero page-hero">
+      <div class="container">
+        <span class="eyebrow">One-on-one coaching</span>
+        <h1>Private Lessons</h1>
+        <p class="lead">Coaching built around your athlete: their style, their gaps and their goals. The fastest way to improve between practices.</p>
+        <a class="btn" href="#request">Request a Lesson</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Pricing</span>
+        <h2>Lesson options</h2>
+        <p class="lead" style="margin-bottom:44px">All prices are placeholders until finalized.</p>
+        <div class="grid grid-3">
+          <div class="card price-card">
+            <h3>Single Lesson</h3>
+            <div class="amount">$[XX]</div>
+            <span class="per">60 minutes · 1 athlete</span>
+            <ul class="checklist" style="text-align:left">
+              <li>Skills assessment</li>
+              <li>Focused technique work</li>
+              <li>Takeaway drills for home</li>
+            </ul>
+          </div>
+          <div class="card price-card featured">
+            <span class="badge">Best value</span>
+            <h3>Lesson Pack</h3>
+            <div class="amount">$[XXX]</div>
+            <span class="per">[5] lessons · 1 athlete</span>
+            <ul class="checklist" style="text-align:left">
+              <li>Everything in a single lesson</li>
+              <li>Progress plan across sessions</li>
+              <li>Discounted per-lesson rate</li>
+            </ul>
+          </div>
+          <div class="card price-card">
+            <h3>Small Group</h3>
+            <div class="amount">$[XX]</div>
+            <span class="per">per athlete · 2–4 athletes</span>
+            <ul class="checklist" style="text-align:left">
+              <li>Train with teammates</li>
+              <li>Live partner work</li>
+              <li>Lower cost per athlete</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <span class="eyebrow">How it works</span>
+        <h2>Three simple steps</h2>
+        <div class="grid grid-3" style="margin-top:36px">
+          <div class="card"><span class="num">1</span><h3>Send a request</h3><p class="muted">Fill out the form below with your athlete's info and when they're available.</p></div>
+          <div class="card"><span class="num">2</span><h3>We confirm a time</h3><p class="muted">We'll reach out within 48 hours to lock in a date and send a secure payment link.</p></div>
+          <div class="card"><span class="num">3</span><h3>Hit the mat</h3><p class="muted">Lessons take place at The Forge in Rochelle, IL. Bring shoes, water and a good attitude.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="request">
+      <div class="container split" style="align-items:start">
+        <div>
+          <span class="eyebrow">Get started</span>
+          <h2>Request a lesson</h2>
+          <p class="muted">Tell us about your athlete and we'll follow up to schedule. Submitting a request doesn't commit you to anything, and payment is only collected once a time is confirmed.</p>
+          <div class="photo-ph" style="margin-top:28px">Photo: coach working with athlete</div>
+        </div>
+        <div class="card">
+          <form id="lesson-form" class="form" novalidate>
+            <div class="form-row">
+              <div><label for="parent">Parent / guardian name</label><input id="parent" name="Parent name" required autocomplete="name"></div>
+              <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+            </div>
+            <div class="form-row">
+              <div><label for="phone">Phone</label><input id="phone" name="Phone" type="tel" autocomplete="tel"></div>
+              <div><label for="athlete">Athlete name</label><input id="athlete" name="Athlete name" required></div>
+            </div>
+            <div class="form-row">
+              <div><label for="age">Athlete age</label><input id="age" name="Athlete age" inputmode="numeric"></div>
+              <div>
+                <label for="experience">Experience</label>
+                <select id="experience" name="Experience">
+                  <option>Brand new</option>
+                  <option>1–2 years</option>
+                  <option>3–5 years</option>
+                  <option>5+ years</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="type">Lesson type</label>
+              <select id="type" name="Lesson type">
+                <option>Single lesson</option>
+                <option>Lesson pack</option>
+                <option>Small group</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div><label for="availability">Availability</label><input id="availability" name="Availability" placeholder="e.g. weeknights after 6, Saturday mornings"></div>
+            <div><label for="goals">Goals / what to work on</label><textarea id="goals" name="Goals" placeholder="Takedowns, bottom escapes, getting ready for sectionals…"></textarea></div>
+            <div class="hp" aria-hidden="true"><label>Leave blank<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+            <button class="btn" type="submit">Send Request</button>
+            <div id="form-status" class="form-status" role="status"></div>
+            <p class="form-note">We'll only use your info to schedule lessons.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="site-data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
