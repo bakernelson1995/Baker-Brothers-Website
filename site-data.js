@@ -7,7 +7,7 @@ window.SITE = {
   // --- Contact & links -----------------------------------------
   email: "bakerbroswrestling@gmail.com",
   phone: "",                       // e.g. "(815) 555-0123" — leave "" to hide
-  instagram: "",                   // e.g. "https://instagram.com/bakerbroswrestling"
+  instagram: "https://www.instagram.com/bakerbrosgrecoroman/",
   facebook: "",
   homeLocation: "The Forge — Rochelle, IL",
 
