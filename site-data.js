@@ -14,7 +14,7 @@ window.SITE = {
   // --- Private lesson request form -----------------------------
   // Create a free form at https://formspree.io, then paste its ID
   // here (the part after /f/ in the form URL, e.g. "xyzabcd").
-  formspreeId: "",
+  formspreeId: "mwlpokyq",
 };
 
 /* ------------------------------------------------------------
