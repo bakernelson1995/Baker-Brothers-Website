@@ -16,7 +16,7 @@
     header.innerHTML = `
       <div class="container nav">
         <a class="logo" href="index.html" aria-label="Baker Bros Wrestling home">
-          <b>BAKER <span>BROS</span></b><small>WRESTLING</small>
+          <img src="images/logo-white.png" alt="Baker Bros Wrestling" width="600" height="601">
         </a>
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
         <ul class="nav-links">
@@ -46,7 +46,7 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <a class="logo" href="index.html"><b>BAKER <span>BROS</span></b><small>WRESTLING</small></a>
+            <a class="logo logo-footer" href="index.html" aria-label="Baker Bros Wrestling home"><img src="images/logo-white.png" alt="Baker Bros Wrestling" width="600" height="601"></a>
             <p class="muted" style="margin-top:14px;max-width:340px">Camps, clinics and private lessons from state-champion coaches. Based in Rochelle, Illinois.</p>
           </div>
           <div>
