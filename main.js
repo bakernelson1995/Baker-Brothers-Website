@@ -138,7 +138,7 @@
       if (limit) evs = evs.slice(0, limit);
       list.innerHTML = evs.length
         ? evs.map((e) => eventHTML(e, compact)).join("")
-        : `<div class="empty">No upcoming ${filter === "all" ? "events" : filter + "s"} right now. Check back soon, or <a href="mailto:${S.email}">email us</a> to get on the list.</div>`;
+        : `<div class="empty">Camps and clinics coming soon — follow us on Instagram <a href="${S.instagram}" target="_blank" rel="noopener">@bakerbrosgrecoroman</a> for dates.</div>`;
     };
     document.querySelectorAll(".filter").forEach((btn) =>
       btn.addEventListener("click", () => {
