@@ -280,6 +280,7 @@ details summary::-webkit-details-marker { display: none; }
 details summary::after { content: "+"; color: var(--accent); font-size: 1.5rem; line-height: 1; }
 details[open] summary::after { content: "–"; }
 details p { margin: 12px 0 0; color: var(--muted); }
+details p a { color: var(--text); text-decoration: underline; }
 
 /* ---------- CTA band ---------- */
 .cta-band {
