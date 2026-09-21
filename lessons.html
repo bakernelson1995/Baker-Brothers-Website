@@ -28,39 +28,39 @@
       <div class="container">
         <span class="eyebrow">Pricing</span>
         <h2>Lesson options</h2>
-        <p class="lead" style="margin-bottom:44px">All prices are placeholders until finalized.</p>
-        <div class="grid grid-3">
+        <p class="lead" style="margin-bottom:44px">Simple hourly rates. No packages, no contracts.</p>
+        <div class="grid grid-2">
           <div class="card price-card">
-            <h3>Single Lesson</h3>
-            <div class="amount">$[XX]</div>
-            <span class="per">60 minutes · 1 athlete</span>
+            <h3>Private Lesson</h3>
+            <div class="amount">$60</div>
+            <span class="per">per hour &middot; 1 athlete</span>
             <ul class="checklist" style="text-align:left">
-              <li>Skills assessment</li>
-              <li>Focused technique work</li>
+              <li>Choose a 60 or 90 minute session</li>
+              <li>Request Nelson or Nolan as your coach</li>
+              <li>Skills assessment and focused technique work</li>
               <li>Takeaway drills for home</li>
-            </ul>
-          </div>
-          <div class="card price-card featured">
-            <span class="badge">Best value</span>
-            <h3>Lesson Pack</h3>
-            <div class="amount">$[XXX]</div>
-            <span class="per">[5] lessons · 1 athlete</span>
-            <ul class="checklist" style="text-align:left">
-              <li>Everything in a single lesson</li>
-              <li>Progress plan across sessions</li>
-              <li>Discounted per-lesson rate</li>
             </ul>
           </div>
           <div class="card price-card">
             <h3>Small Group</h3>
-            <div class="amount">$[XX]</div>
-            <span class="per">per athlete · 2–4 athletes</span>
+            <div class="amount">$40</div>
+            <span class="per">per hour &middot; per athlete</span>
             <ul class="checklist" style="text-align:left">
-              <li>Train with teammates</li>
-              <li>Live partner work</li>
-              <li>Lower cost per athlete</li>
+              <li>Bring a training partner of similar size</li>
+              <li>Live partner work with coaching</li>
+              <li>A lower cost per athlete</li>
             </ul>
           </div>
+        </div>
+
+        <div class="card accent-top" style="margin-top:24px">
+          <h3>Before you book</h3>
+          <ul class="checklist">
+            <li>Every athlete must have an active USA Wrestling (USAW) card and sign our waivers.</li>
+            <li>All requests are subject to being accepted, rejected or cancelled for any reason.</li>
+            <li>If an accepted lesson or small group session has to be cancelled, we'll make an honest effort to reschedule it.</li>
+            <li>Payment is due before the session. If we cancel and can't reschedule, you'll get a full refund.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -71,8 +71,8 @@
         <h2>Three simple steps</h2>
         <div class="grid grid-3" style="margin-top:36px">
           <div class="card"><span class="num">1</span><h3>Send a request</h3><p class="muted">Fill out the form below with your athlete's info and when they're available.</p></div>
-          <div class="card"><span class="num">2</span><h3>We confirm a time</h3><p class="muted">We'll reach out within 48 hours to lock in a date and send a secure payment link.</p></div>
-          <div class="card"><span class="num">3</span><h3>Hit the mat</h3><p class="muted">Lessons take place at The Forge in Rochelle, IL. Bring shoes, water and a good attitude.</p></div>
+          <div class="card"><span class="num">2</span><h3>We confirm a time</h3><p class="muted">We'll reach out within 48 hours to accept or decline, and if accepted, lock in a date and send a payment link. Payment is due before the session.</p></div>
+          <div class="card"><span class="num">3</span><h3>Hit the mat</h3><p class="muted">Lessons take place at The Forge in Rochelle, IL. Bring your USAW card, shoes, water and a good attitude.</p></div>
         </div>
       </div>
     </section>
@@ -82,7 +82,7 @@
         <div>
           <span class="eyebrow">Get started</span>
           <h2>Request a lesson</h2>
-          <p class="muted">Tell us about your athlete and we'll follow up to schedule. Submitting a request doesn't commit you to anything, and payment is only collected once a time is confirmed.</p>
+          <p class="muted">Tell us about your athlete and we'll follow up to schedule. Submitting a request doesn't commit you to anything. All requests are subject to approval, and payment is only collected once a time is confirmed.</p>
           <div class="photo-ph" style="margin-top:28px">Photo: coach working with athlete</div>
         </div>
         <div class="card">
@@ -107,13 +107,38 @@
                 </select>
               </div>
             </div>
+            <div class="form-row">
+              <div>
+                <label for="type">Lesson type</label>
+                <select id="type" name="Lesson type">
+                  <option>Private lesson ($60/hr)</option>
+                  <option>Small group ($40/hr per athlete)</option>
+                </select>
+              </div>
+              <div>
+                <label for="length">Length (private lessons)</label>
+                <select id="length" name="Lesson length">
+                  <option>60 minutes</option>
+                  <option>90 minutes</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="coach">Coach</label>
+                <select id="coach" name="Coach">
+                  <option>No preference</option>
+                  <option>Nelson</option>
+                  <option>Nolan</option>
+                </select>
+              </div>
+              <div><label for="partner">Training partner (small group)</label><input id="partner" name="Training partner" placeholder="Name and weight"></div>
+            </div>
             <div>
-              <label for="type">Lesson type</label>
-              <select id="type" name="Lesson type">
-                <option>Single lesson</option>
-                <option>Lesson pack</option>
-                <option>Small group</option>
-                <option>Not sure yet</option>
+              <label for="usaw">Active USAW card?</label>
+              <select id="usaw" name="Active USAW card">
+                <option>Yes</option>
+                <option>No</option>
               </select>
             </div>
             <div><label for="availability">Availability</label><input id="availability" name="Availability" placeholder="e.g. weeknights after 6, Saturday mornings"></div>
