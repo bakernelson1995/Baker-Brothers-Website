@@ -8,7 +8,7 @@ window.SITE = {
   email: "bakerbroswrestling@gmail.com",
   phone: "",                       // e.g. "(815) 555-0123" — leave "" to hide
   instagram: "https://www.instagram.com/bakerbrosgrecoroman/",
-  facebook: "",
+  facebook: "https://www.facebook.com/profile.php?id=61585384074765",
   homeLocation: "The Forge — Rochelle, IL",
 
   // --- Private lesson request form -----------------------------
