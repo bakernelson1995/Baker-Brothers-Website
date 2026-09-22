@@ -10,7 +10,7 @@
     ["lessons.html", "Private Lessons", "lessons"],
     ["about.html", "About", "about"],
   ];
-  if (S.performancePlatform) links.push([S.performancePlatform, "Performance Platform", "performance"]);
+  if (S.performancePlatform) links.push(["performance-platform.html", "Performance Platform", "performance"]);
   const header = document.getElementById("site-header");
   if (header) {
     header.className = "site-header";
