@@ -11,6 +11,9 @@ window.SITE = {
   facebook: "https://www.facebook.com/profile.php?id=61585384074765",
   homeLocation: "The Forge — Rochelle, IL",
 
+  // Skool community — leave "" to hide the nav tab
+  performancePlatform: "https://www.skool.com/baker-bros-greco-roman-4869",
+
   // --- Private lesson request form -----------------------------
   // Create a free form at https://formspree.io, then paste its ID
   // here (the part after /f/ in the form URL, e.g. "xyzabcd").

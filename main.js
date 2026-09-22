@@ -10,6 +10,7 @@
     ["lessons.html", "Private Lessons", "lessons"],
     ["about.html", "About", "about"],
   ];
+  if (S.performancePlatform) links.push([S.performancePlatform, "Performance Platform", "performance"]);
   const header = document.getElementById("site-header");
   if (header) {
     header.className = "site-header";
@@ -20,8 +21,10 @@
         </a>
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
         <ul class="nav-links">
-          ${links.map(([href, label, key]) =>
-            `<li><a href="${href}" class="${key === page ? "active" : ""}">${label}</a></li>`).join("")}
+          ${links.map(([href, label, key]) => {
+            const external = href.startsWith("http");
+            return `<li><a href="${href}" class="${key === page ? "active" : ""}"${external ? ' target="_blank" rel="noopener"' : ""}>${label}</a></li>`;
+          }).join("")}
           <li><a class="btn" href="lessons.html#request">Book a Lesson</a></li>
         </ul>
       </div>`;
