@@ -157,10 +157,94 @@
   const form = document.getElementById("lesson-form");
   if (form) {
     const status = document.getElementById("form-status");
+    const btn = form.querySelector("button[type=submit]");
+    const $ = (id) => document.getElementById(id);
+    const val = (id) => $(id).value.trim();
+    const isSmallGroup = () => /small group/i.test($("type").value);
+    const MIN_FILL_MS = 3000;
+    let firstFocusAt = 0;
+    let sending = false;
+
+    // Each rule returns an error message, or "" when the field is fine.
+    const rules = {
+      parent: () => val("parent") ? "" : "Please enter your name so we know who to contact.",
+      email: () => {
+        const v = val("email");
+        if (!v) return "Please enter your email so we can reply.";
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? "" : "That email doesn't look right. Please check it (example: name@gmail.com).";
+      },
+      phone: () => {
+        const v = val("phone");
+        if (!v) return "Please enter a phone number we can reach you at.";
+        let digits = v.replace(/\D/g, "");
+        if (digits.length === 11 && digits[0] === "1") digits = digits.slice(1);
+        const ok = /^[\d\s().+-]+$/.test(v) && /^[2-9]\d{9}$/.test(digits);
+        return ok ? "" : "Please enter a phone number we can reach you at, with area code (example: 815-555-0123).";
+      },
+      athlete: () => val("athlete") ? "" : "Please enter your athlete's name.",
+      age: () => {
+        const el = $("age");
+        if (el.validity.badInput) return "Please enter your athlete's age as a number.";
+        if (!val("age")) return "Please enter your athlete's age.";
+        const n = Number(val("age"));
+        return Number.isInteger(n) && n >= 4 && n <= 20 ? "" : "Lessons are for athletes ages 4 to 20. Please check the age.";
+      },
+      weight: () => {
+        const el = $("weight");
+        if (el.validity.badInput) return "Please enter weight as a number of pounds, or leave it blank.";
+        if (!val("weight")) return "";
+        const n = Number(val("weight"));
+        return n >= 30 && n <= 400 ? "" : "Please enter a weight between 30 and 400 lbs, or leave it blank.";
+      },
+      partner: () => isSmallGroup() && !val("partner")
+        ? "Small group lessons need a training partner of similar size. Please enter their name and weight." : "",
+    };
+
+    const showError = (id, msg) => {
+      const el = $(id), err = $(id + "-error");
+      err.textContent = msg;
+      if (msg) el.setAttribute("aria-invalid", "true");
+      else el.removeAttribute("aria-invalid");
+    };
+    const check = (id) => { const msg = rules[id](); showError(id, msg); return !msg; };
+
+    // Pressing Send blurs the current field. Skip that blur check so a new error line
+    // doesn't shift the button out from under the mouse and swallow the click.
+    let pressingSend = false;
+    btn.addEventListener("pointerdown", () => { pressingSend = true; });
+    document.addEventListener("pointerup", () => setTimeout(() => { pressingSend = false; }));
+
+    Object.keys(rules).forEach((id) => {
+      const el = $(id);
+      el.addEventListener("blur", () => { if (!pressingSend) check(id); });
+      // Once a field is flagged, re-check as they type so the error clears the moment it's fixed.
+      el.addEventListener("input", () => { if (el.getAttribute("aria-invalid")) check(id); });
+    });
+    $("type").addEventListener("change", () => {
+      if (!isSmallGroup() || $("partner").getAttribute("aria-invalid")) check("partner");
+    });
+    form.addEventListener("focusin", () => { if (!firstFocusAt) firstFocusAt = Date.now(); });
+
+    const setStatus = (html, cls) => { status.innerHTML = html; status.className = "form-status" + (cls ? " " + cls : ""); };
+    const resetButton = () => { sending = false; btn.disabled = false; btn.textContent = "Send Request"; };
+
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      status.className = "form-status";
+      if (sending) return;
+      setStatus("", "");
+
+      const invalid = Object.keys(rules).filter((id) => !check(id));
+      if (invalid.length) { $(invalid[0]).focus(); return; }
+
       if (form.querySelector(".hp input").value) return; // spam bot
+      if (!firstFocusAt || Date.now() - firstFocusAt < MIN_FILL_MS) {
+        setStatus("Please take a moment to double-check your details, then press Send Request again.", "err");
+        return;
+      }
+
+      sending = true;
+      btn.disabled = true; btn.textContent = "Sending…";
+      form.querySelectorAll("input:not([type=number]), textarea").forEach((el) => { el.value = el.value.trim(); });
       const data = new FormData(form);
 
       // No form service connected yet: fall back to opening an email.
@@ -169,24 +253,28 @@
           .filter(([k]) => k !== "_gotcha")
           .map(([k, v]) => `${k}: ${v}`).join("\n");
         window.location.href = `mailto:${S.email}?subject=${encodeURIComponent("Private Lesson Request")}&body=${encodeURIComponent(body)}`;
+        resetButton();
         return;
       }
 
-      const btn = form.querySelector("button[type=submit]");
-      btn.disabled = true; btn.textContent = "Sending…";
       try {
         const res = await fetch(`https://formspree.io/f/${S.formspreeId}`, {
           method: "POST", body: data, headers: { Accept: "application/json" },
         });
         if (!res.ok) throw new Error();
-        form.reset();
-        status.textContent = "Request received. We'll reach out within 48 hours to set up a time.";
-        status.className = "form-status ok";
+        const done = document.createElement("div");
+        done.className = "form-success";
+        done.setAttribute("role", "status");
+        done.tabIndex = -1;
+        done.innerHTML = `
+          <h3>Request received</h3>
+          <p>Thanks! Your lesson request came through. Nelson will follow up within 48 hours to confirm a time.</p>
+          <p class="muted">Payment is due before the session by cash, check or Venmo. Questions in the meantime? Email <a href="mailto:${S.email}">${S.email}</a>.</p>`;
+        form.replaceWith(done);
+        done.focus();
       } catch {
-        status.innerHTML = `Something went wrong. Please email us at <a href="mailto:${S.email}">${S.email}</a>.`;
-        status.className = "form-status err";
-      } finally {
-        btn.disabled = false; btn.textContent = "Send Request";
+        setStatus(`Sorry, your request didn't go through. Your answers are still here, so please try again, or email us directly at <a href="mailto:${S.email}">${S.email}</a>.`, "err");
+        resetButton();
       }
     });
   }

@@ -97,16 +97,17 @@
         </div>
         <div class="card">
           <form id="lesson-form" class="form" novalidate>
+            <p class="form-note">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
             <div class="form-row">
-              <div><label for="parent">Parent / guardian name</label><input id="parent" name="Parent name" required autocomplete="name"></div>
-              <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+              <div><label for="parent">Parent / guardian name <span class="req" aria-hidden="true">*</span></label><input id="parent" name="Parent name" required autocomplete="name" aria-describedby="parent-error"><p class="field-error" id="parent-error"></p></div>
+              <div><label for="email">Email <span class="req" aria-hidden="true">*</span></label><input id="email" name="email" type="email" required autocomplete="email" aria-describedby="email-error"><p class="field-error" id="email-error"></p></div>
             </div>
             <div class="form-row">
-              <div><label for="phone">Phone</label><input id="phone" name="Phone" type="tel" autocomplete="tel"></div>
-              <div><label for="athlete">Athlete name</label><input id="athlete" name="Athlete name" required></div>
+              <div><label for="phone">Phone <span class="req" aria-hidden="true">*</span></label><input id="phone" name="Phone" type="tel" required autocomplete="tel" placeholder="(815) 555-0123" aria-describedby="phone-error"><p class="field-error" id="phone-error"></p></div>
+              <div><label for="athlete">Athlete name <span class="req" aria-hidden="true">*</span></label><input id="athlete" name="Athlete name" required aria-describedby="athlete-error"><p class="field-error" id="athlete-error"></p></div>
             </div>
             <div class="form-row">
-              <div><label for="age">Athlete age</label><input id="age" name="Athlete age" inputmode="numeric"></div>
+              <div><label for="age">Athlete age <span class="req" aria-hidden="true">*</span></label><input id="age" name="Athlete age" type="number" min="4" max="20" step="1" inputmode="numeric" required aria-describedby="age-error"><p class="field-error" id="age-error"></p></div>
               <div>
                 <label for="experience">Experience</label>
                 <select id="experience" name="Experience">
@@ -142,11 +143,11 @@
                   <option>Nolan</option>
                 </select>
               </div>
-              <div><label for="partner">Training partner (small group)</label><input id="partner" name="Training partner" placeholder="Name and weight"></div>
+              <div><label for="partner">Training partner (required for small group)</label><input id="partner" name="Training partner" placeholder="Name and weight" aria-describedby="partner-error"><p class="field-error" id="partner-error"></p></div>
             </div>
             <div class="form-row">
               <div><label for="usaw">Athlete USAW ID number</label><input id="usaw" name="USAW ID number" placeholder="Active USAW card required"></div>
-              <div><label for="weight">Athlete weight (lbs)</label><input id="weight" name="Athlete weight" inputmode="decimal"></div>
+              <div><label for="weight">Athlete weight (lbs)</label><input id="weight" name="Athlete weight" type="number" min="30" max="400" step="any" inputmode="decimal" aria-describedby="weight-error"><p class="field-error" id="weight-error"></p></div>
             </div>
             <div><label for="availability">Availability</label><input id="availability" name="Availability" placeholder="e.g. weeknights after 6, Saturday mornings"></div>
             <div><label for="goals">Goals / what to work on</label><textarea id="goals" name="Goals" placeholder="Takedowns, bottom escapes, getting ready for sectionals…"></textarea></div>
