@@ -37,6 +37,17 @@
     });
   }
 
+  /* ---------- Performance Platform (Skool) links ---------- */
+  // Single source of truth: site-data.js. The href in the HTML is only a fallback
+  // for the no-JS case, so changing the link in site-data.js is enough.
+  if (S.performancePlatform) {
+    document.querySelectorAll("a[data-skool]").forEach((a) => {
+      a.href = S.performancePlatform;
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+  }
+
   /* ---------- footer ---------- */
   const footer = document.getElementById("site-footer");
   if (footer) {
